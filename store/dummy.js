@@ -1,4 +1,8 @@
-const db = {}
+const db = {
+    'user': [
+      { id: 1, name: 'Carlos'},
+    ]
+}
 
 function list (tabla) {
   return db[tabla];
@@ -8,9 +12,11 @@ function get (tabla, id) {
   return col.find(item => item.id === id) || null;
 }
 function upsert (tabla, data) {
-  //db[]
+  db[collection].push(data);
 }
-function remove (tabla, id) {}
+function remove (tabla, id) {
+  return true;
+}
 
 
 module.exports = {
