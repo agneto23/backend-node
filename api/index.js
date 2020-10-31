@@ -11,5 +11,5 @@ const app = express();
 app.use('/', user)
 
 app.listen(config.api.port, () =>{
-    console.log('escuchando en: ', config.api.port)
+    console.log('escuchando en el puerto: ', config.api.port)
 })
