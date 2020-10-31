@@ -1,11 +1,11 @@
 const express = require('express');
 
-const response = require('../../../network/responde');
+const response = require('../../../network/response');
 
 const router = express.Router();
 
-router.get('/', function (req, res) {
-    response.success(req, res, 'Todo correcto', 200)
+router.get('/api/user', function (req, res) {
+    response.success(req, res, 'Todo correcto ok ok ok', 200)
 })
 
 module.exports = router;

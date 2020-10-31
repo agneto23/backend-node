@@ -8,7 +8,7 @@ const app = express();
 
 //router
 
-app.use('/api/user', user)
+app.use('/', user)
 
 app.listen(config.api.port, () =>{
     console.log('escuchando en: ', config.api.port)
