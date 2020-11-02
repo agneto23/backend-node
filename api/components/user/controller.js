@@ -6,7 +6,7 @@ const TABLA = 'user';
 module.exports = function (injectedStore) {
     let store = injectedStore;
     if (!store) {
-        store = require('../../../store/dummy');
+        store = require('../../../store/mysql');
     }
 
     function list() {
@@ -23,21 +23,26 @@ module.exports = function (injectedStore) {
             username: body.username,
         }
 
+        let isNew;
+
         if (body.id) {
             user.id = body.id;
+            isNew = false;
         } else {
             user.id = nanoid();
+            isNew = true;
         }
 
         if (body.password || body.username) {
+            console.log('insert in auth: ', body)
             await auth.upsert({
                 id: user.id,
                 username: user.username,
                 password: body.password,
-            })
+            }, isNew)
         }
 
-        return store.upsert(TABLA, user);
+        return store.upsert(TABLA, user, isNew);
     }
 
     return {
